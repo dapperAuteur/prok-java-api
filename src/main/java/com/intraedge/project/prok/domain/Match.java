@@ -3,11 +3,16 @@ package com.intraedge.project.prok.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document
+
+@Document(collection = "matches")
 public class Match {
 
+	@Id
+	private ObjectId _id;
 	@DBRef
 	private User scoreKeeper;
 	@DBRef
@@ -42,12 +47,13 @@ public class Match {
 	
 	public Match() {}
 	
-	public Match(User scoreKeeper, Team homeTeam, ArrayList<Player> homeTeamKickingOrder, int homeTeamScore,
-			Team awayTeam, ArrayList<Player> awayTeamKickingOrder, int awayTeamScore, String locationAddress,
-			String locationName, String locationGPS, String locationCity, String locationState, String locationZipCode,
-			String field, String currentInning, Boolean extraInnings, int balls, int strikes, int fouls, int outs,
-			Boolean encroachmentWarning, int matchLength, String lengthMeasured, Date startTime) {
+	public Match(ObjectId _id, User scoreKeeper, Team homeTeam, ArrayList<Player> homeTeamKickingOrder,
+			int homeTeamScore, Team awayTeam, ArrayList<Player> awayTeamKickingOrder, int awayTeamScore,
+			String locationAddress, String locationName, String locationGPS, String locationCity, String locationState,
+			String locationZipCode, String field, String currentInning, Boolean extraInnings, int balls, int strikes,
+			int fouls, int outs, Boolean encroachmentWarning, int matchLength, String lengthMeasured, Date startTime) {
 		super();
+		this._id = _id;
 		this.scoreKeeper = scoreKeeper;
 		this.homeTeam = homeTeam;
 		this.homeTeamKickingOrder = homeTeamKickingOrder;
@@ -73,7 +79,15 @@ public class Match {
 		this.lengthMeasured = lengthMeasured;
 		this.startTime = startTime;
 	}
-	
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 	public User getScoreKeeper() {
 		return scoreKeeper;
 	}
@@ -218,11 +232,12 @@ public class Match {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
+
 	@Override
 	public String toString() {
-		return "Match [scoreKeeper=" + scoreKeeper + ", homeTeam=" + homeTeam + ", homeTeamKickingOrder="
-				+ homeTeamKickingOrder + ", homeTeamScore=" + homeTeamScore + ", awayTeam=" + awayTeam
-				+ ", awayTeamKickingOrder=" + awayTeamKickingOrder + ", awayTeamScore=" + awayTeamScore
+		return "Match [_id=" + _id + ", scoreKeeper=" + scoreKeeper + ", homeTeam=" + homeTeam
+				+ ", homeTeamKickingOrder=" + homeTeamKickingOrder + ", homeTeamScore=" + homeTeamScore + ", awayTeam="
+				+ awayTeam + ", awayTeamKickingOrder=" + awayTeamKickingOrder + ", awayTeamScore=" + awayTeamScore
 				+ ", locationAddress=" + locationAddress + ", locationName=" + locationName + ", locationGPS="
 				+ locationGPS + ", locationCity=" + locationCity + ", locationState=" + locationState
 				+ ", locationZipCode=" + locationZipCode + ", field=" + field + ", currentInning=" + currentInning
@@ -230,10 +245,12 @@ public class Match {
 				+ ", outs=" + outs + ", encroachmentWarning=" + encroachmentWarning + ", matchLength=" + matchLength
 				+ ", lengthMeasured=" + lengthMeasured + ", startTime=" + startTime + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + ((awayTeam == null) ? 0 : awayTeam.hashCode());
 		result = prime * result + ((awayTeamKickingOrder == null) ? 0 : awayTeamKickingOrder.hashCode());
 		result = prime * result + awayTeamScore;
@@ -260,6 +277,7 @@ public class Match {
 		result = prime * result + strikes;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -269,6 +287,11 @@ public class Match {
 		if (getClass() != obj.getClass())
 			return false;
 		Match other = (Match) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (awayTeam == null) {
 			if (other.awayTeam != null)
 				return false;
@@ -370,7 +393,5 @@ public class Match {
 			return false;
 		return true;
 	}
-	
-	
 
 }

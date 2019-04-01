@@ -2,11 +2,16 @@ package com.intraedge.project.prok.domain;
 
 import java.util.ArrayList;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document
+
+@Document(collection = "teams")
 public class Team {
 	
+	@Id
+	private ObjectId _id;
 	private String teamName;
 	@DBRef
 	private ArrayList<Player> players;
@@ -22,9 +27,12 @@ public class Team {
 	
 	
 	public Team() {}
-	public Team(String teamName, ArrayList<Player> players, Player captain, User manager, int wins, int losses,
-			int ties, int championships) {
+	
+	
+	public Team(ObjectId _id, String teamName, ArrayList<Player> players, Player captain, User manager, int wins,
+			int losses, int ties, int championships) {
 		super();
+		this._id = _id;
 		this.teamName = teamName;
 		this.players = players;
 		this.captain = captain;
@@ -34,6 +42,18 @@ public class Team {
 		this.ties = ties;
 		this.championships = championships;
 	}
+
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
+
 	/**
 	 * @return the teamName
 	 */
@@ -133,30 +153,33 @@ public class Team {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+
+
 	@Override
 	public String toString() {
-		return "Team [teamName=" + teamName + ", captain=" + captain + ", manager=" + manager + ", wins=" + wins
-				+ ", losses=" + losses + ", ties=" + ties + ", championships=" + championships + "]";
+		return "Team [_id=" + _id + ", teamName=" + teamName + ", players=" + players + ", captain=" + captain
+				+ ", manager=" + manager + ", wins=" + wins + ", losses=" + losses + ", ties=" + ties
+				+ ", championships=" + championships + "]";
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + ((captain == null) ? 0 : captain.hashCode());
 		result = prime * result + championships;
 		result = prime * result + losses;
 		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
+		result = prime * result + ((players == null) ? 0 : players.hashCode());
 		result = prime * result + ((teamName == null) ? 0 : teamName.hashCode());
 		result = prime * result + ties;
 		result = prime * result + wins;
 		return result;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -166,6 +189,11 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (captain == null) {
 			if (other.captain != null)
 				return false;
@@ -180,6 +208,11 @@ public class Team {
 				return false;
 		} else if (!manager.equals(other.manager))
 			return false;
+		if (players == null) {
+			if (other.players != null)
+				return false;
+		} else if (!players.equals(other.players))
+			return false;
 		if (teamName == null) {
 			if (other.teamName != null)
 				return false;
@@ -191,5 +224,7 @@ public class Team {
 			return false;
 		return true;
 	}
+	
+	
 
 }

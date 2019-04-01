@@ -1,24 +1,38 @@
 package com.intraedge.project.prok.domain;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "users")
 public class User {
 	
+	@Id
+	private ObjectId _id;
 	private String username;
 	private String userRole;
 	private String profilePicture;
 	private String password;
 	
 	public User() {}
-	
-	public User(String username, String userRole, String profilePicture, String password) {
+		
+	public User(ObjectId _id, String username, String userRole, String profilePicture, String password) {
+		super();
+		this._id = _id;
 		this.username = username;
 		this.userRole = userRole;
 		this.profilePicture = profilePicture;
 		this.password = password;
 	}
-		
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 	/**
 	 * @return the username
 	 */
@@ -67,14 +81,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+
+	@Override
+	public String toString() {
+		return "User [_id=" + _id + ", username=" + username + ", userRole=" + userRole + ", profilePicture="
+				+ profilePicture + ", password=" + password + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((profilePicture == null) ? 0 : profilePicture.hashCode());
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
@@ -82,9 +100,6 @@ public class User {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -94,6 +109,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -115,15 +135,6 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", userRole=" + userRole + ", profilePicture=" + profilePicture
-				+ ", password=" + password + "]";
 	}
 
 }

@@ -1,10 +1,15 @@
 package com.intraedge.project.prok.domain;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document
+
+@Document(collection = "players")
 public class Player {
 	
+	@Id
+	private ObjectId _id;
 	private String nickname;
 	@DBRef
 	private User user;
@@ -17,8 +22,10 @@ public class Player {
 	
 	public Player() {}
 	
-	public Player(String nickname, User user, int atBats, int kicks, int walks, int pitchingOuts, int inningsPitched) {
+	public Player(ObjectId _id, String nickname, User user, int atBats, int kicks, int walks, int pitchingOuts,
+			int inningsPitched) {
 		super();
+		this._id = _id;
 		this.nickname = nickname;
 		this.user = user;
 		this.atBats = atBats;
@@ -27,7 +34,15 @@ public class Player {
 		this.pitchingOuts = pitchingOuts;
 		this.inningsPitched = inningsPitched;
 	}
-	
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 	/**
 	 * @return the nickname
 	 */
@@ -112,21 +127,19 @@ public class Player {
 	public void setInningsPitched(int inningsPitched) {
 		this.inningsPitched = inningsPitched;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
-		return "Player [nickname=" + nickname + ", user=" + user + ", atBats=" + atBats + ", kicks=" + kicks
-				+ ", walks=" + walks + ", pitchingOuts=" + pitchingOuts + ", inningsPitched=" + inningsPitched + "]";
+		return "Player [_id=" + _id + ", nickname=" + nickname + ", user=" + user + ", atBats=" + atBats + ", kicks="
+				+ kicks + ", walks=" + walks + ", pitchingOuts=" + pitchingOuts + ", inningsPitched=" + inningsPitched
+				+ "]";
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + atBats;
 		result = prime * result + inningsPitched;
 		result = prime * result + kicks;
@@ -136,9 +149,7 @@ public class Player {
 		result = prime * result + walks;
 		return result;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -148,6 +159,11 @@ public class Player {
 		if (getClass() != obj.getClass())
 			return false;
 		Player other = (Player) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (atBats != other.atBats)
 			return false;
 		if (inningsPitched != other.inningsPitched)
@@ -170,8 +186,5 @@ public class Player {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

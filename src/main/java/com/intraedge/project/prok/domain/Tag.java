@@ -1,21 +1,34 @@
 package com.intraedge.project.prok.domain;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "tags")
 public class Tag {
 	
+	@Id
+	private ObjectId _id;
 	private String tagName;
 	private String tagDescription;
 	
 	public Tag() {}
 	
-	public Tag(String tagName, String tagDescription) {
+	public Tag(ObjectId _id, String tagName, String tagDescription) {
 		super();
+		this._id = _id;
 		this.tagName = tagName;
 		this.tagDescription = tagDescription;
 	}
-	
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 	public String getTagName() {
 		return tagName;
 	}
@@ -28,18 +41,22 @@ public class Tag {
 	public void setTagDescription(String tagDescription) {
 		this.tagDescription = tagDescription;
 	}
+
 	@Override
 	public String toString() {
-		return "Tag [tagName=" + tagName + ", tagDescription=" + tagDescription + "]";
+		return "Tag [_id=" + _id + ", tagName=" + tagName + ", tagDescription=" + tagDescription + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		result = prime * result + ((tagDescription == null) ? 0 : tagDescription.hashCode());
 		result = prime * result + ((tagName == null) ? 0 : tagName.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -49,6 +66,11 @@ public class Tag {
 		if (getClass() != obj.getClass())
 			return false;
 		Tag other = (Tag) obj;
+		if (_id == null) {
+			if (other._id != null)
+				return false;
+		} else if (!_id.equals(other._id))
+			return false;
 		if (tagDescription == null) {
 			if (other.tagDescription != null)
 				return false;
@@ -61,5 +83,7 @@ public class Tag {
 			return false;
 		return true;
 	}
+	
+	
 
 }
