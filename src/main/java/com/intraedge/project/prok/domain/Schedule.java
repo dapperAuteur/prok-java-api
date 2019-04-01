@@ -3,9 +3,14 @@ package com.intraedge.project.prok.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class Schedule {
-	
+
+	@DBRef
 	private User manager;
+	@DBRef
 	private ArrayList<Match> matches;
 	private Date startDate;
 	private Date endDate;

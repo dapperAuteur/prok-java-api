@@ -2,11 +2,17 @@ package com.intraedge.project.prok.domain;
 
 import java.util.ArrayList;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class League {
 	
 	private String leagueName;
+	@DBRef
 	private ArrayList<Team> teams;
+	@DBRef
 	private User leagueManager;
+	@DBRef
 	private Schedule schedule;
 	
 	public League() {}

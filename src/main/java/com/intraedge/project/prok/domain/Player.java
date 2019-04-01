@@ -1,8 +1,12 @@
 package com.intraedge.project.prok.domain;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class Player {
 	
 	private String nickname;
+	@DBRef
 	private User user;
 	private int atBats;
 	private int kicks;

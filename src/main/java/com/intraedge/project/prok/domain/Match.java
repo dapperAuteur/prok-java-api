@@ -3,13 +3,21 @@ package com.intraedge.project.prok.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class Match {
-	
+
+	@DBRef
 	private User scoreKeeper;
+	@DBRef
 	private Team homeTeam;
+	@DBRef
 	private ArrayList<Player> homeTeamKickingOrder;
 	private int homeTeamScore;
+	@DBRef
 	private Team awayTeam;
+	@DBRef
 	private ArrayList<Player> awayTeamKickingOrder;
 	private int awayTeamScore;
 	private String locationAddress;

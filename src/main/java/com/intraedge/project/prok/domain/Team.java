@@ -2,11 +2,17 @@ package com.intraedge.project.prok.domain;
 
 import java.util.ArrayList;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class Team {
 	
 	private String teamName;
+	@DBRef
 	private ArrayList<Player> players;
+	@DBRef
 	private Player captain;
+	@DBRef
 	private User manager;
 	private int wins;
 	private int losses;
