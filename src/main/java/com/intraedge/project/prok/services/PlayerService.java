@@ -13,14 +13,29 @@ public class PlayerService {
 
 	@Autowired
 	private PlayerRepository playerRepository;
-	
-	public List<Player> getPlayers(){
+
+	public List<Player> getPlayers() {
 		List<Player> foundPlayers = playerRepository.findAll();
 		return foundPlayers;
 	}
-	
+
 	public Player findPlayerBy_id(String _id) {
 		Player foundPlayer = playerRepository.findPlayerBy_id(_id);
 		return foundPlayer;
+	}
+
+	public Player createPlayer(Player newPlayer) {
+		Player createdPlayer = playerRepository.save(newPlayer);
+		return createdPlayer;
+	}
+
+	public Player updatePlayerBy_id(Player player) {
+		Player updatedPlayer = playerRepository.save(player);
+		return updatedPlayer;
+	}
+
+	public void deletePlayerBy_id(String _id) {
+		Player foundPlayer = playerRepository.findPlayerBy_id(_id);
+		playerRepository.delete(foundPlayer);
 	}
 }

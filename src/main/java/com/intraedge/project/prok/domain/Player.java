@@ -10,8 +10,7 @@ public class Player {
 	@Id
 	private String _id;
 	private String nickname;
-	@DBRef
-	private String user;
+	private String userId;
 	private int atBats;
 	private int kicks;
 	private int walks;
@@ -21,12 +20,12 @@ public class Player {
 	
 	public Player() {}
 	
-	public Player(String _id, String nickname, String user, int atBats, int kicks, int walks, int pitchingOuts,
+	public Player(String _id, String nickname, String userId, int atBats, int kicks, int walks, int pitchingOuts,
 			int inningsPitched) {
 		super();
 		this._id = _id;
 		this.nickname = nickname;
-		this.user = user;
+		this.userId = userId;
 		this.atBats = atBats;
 		this.kicks = kicks;
 		this.walks = walks;
@@ -55,16 +54,16 @@ public class Player {
 		this.nickname = nickname;
 	}
 	/**
-	 * @return the user
+	 * @return the userId
 	 */
-	public String getUser() {
-		return user;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * @param user the user to set
+	 * @param userId the userId to set
 	 */
-	public void setUser(String user) {
-		this.user = user;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	/**
 	 * @return the atBats
@@ -129,7 +128,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [_id=" + _id + ", nickname=" + nickname + ", user=" + user + ", atBats=" + atBats + ", kicks="
+		return "Player [_id=" + _id + ", nickname=" + nickname + ", userId=" + userId + ", atBats=" + atBats + ", kicks="
 				+ kicks + ", walks=" + walks + ", pitchingOuts=" + pitchingOuts + ", inningsPitched=" + inningsPitched
 				+ "]";
 	}
@@ -144,7 +143,7 @@ public class Player {
 		result = prime * result + kicks;
 		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
 		result = prime * result + pitchingOuts;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		result = prime * result + walks;
 		return result;
 	}
@@ -176,10 +175,10 @@ public class Player {
 			return false;
 		if (pitchingOuts != other.pitchingOuts)
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!userId.equals(other.userId))
 			return false;
 		if (walks != other.walks)
 			return false;
