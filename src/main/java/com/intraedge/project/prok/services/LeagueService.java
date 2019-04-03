@@ -25,7 +25,9 @@ public class LeagueService {
 	}
 	
 	public League createLeague(League newLeague) {
+		System.out.println("before service createdLeague");
 		League createdLeague = leagueRepository.save(newLeague);
+		System.out.println("createdLeague");
 		System.out.println(createdLeague);
 		return createdLeague;
 	}
@@ -36,7 +38,9 @@ public class LeagueService {
 	}
 	
 	public void deleteLeagueBy_id(String _id) {
+//		System.out.println("service delete league before service call");
 		League foundLeague = leagueRepository.findBy_id(_id);
+//		System.out.println("service delete league after service call");
 		leagueRepository.delete(foundLeague);
 	}
 

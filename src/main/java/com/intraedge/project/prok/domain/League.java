@@ -13,11 +13,11 @@ public class League {
 	@Id
 	private String _id;
 	private String leagueName;
-	@DBRef
+//	@DBRef
 	private List<String> teams;
-	@DBRef
+//	@DBRef
 	private String leagueManager;
-	@DBRef
+//	@DBRef
 	private String schedule;
 	
 	public League() {}
