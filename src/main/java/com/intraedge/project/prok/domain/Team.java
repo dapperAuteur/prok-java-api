@@ -2,23 +2,18 @@ package com.intraedge.project.prok.domain;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "teams")
 public class Team {
 	
 	@Id
-	private ObjectId _id;
+	private String _id;
 	private String teamName;
-	@DBRef
-	private List<ObjectId> players;
-	@DBRef
-	private ObjectId captain;
-	@DBRef
-	private ObjectId manager;
+	private List<String> players;
+	private String captain;
+	private String manager;
 	private int wins;
 	private int losses;
 	private int ties;
@@ -29,7 +24,7 @@ public class Team {
 	public Team() {}
 	
 	
-	public Team(ObjectId _id, String teamName, List<ObjectId> players, ObjectId captain, ObjectId manager, int wins,
+	public Team(String _id, String teamName, List<String> players, String captain, String manager, int wins,
 			int losses, int ties, int championships) {
 		super();
 		this._id = _id;
@@ -44,12 +39,12 @@ public class Team {
 	}
 
 
-	public ObjectId get_id() {
+	public String get_id() {
 		return _id;
 	}
 
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
@@ -69,37 +64,37 @@ public class Team {
 	/**
 	 * @return the players
 	 */
-	public List<ObjectId> getPlayers() {
+	public List<String> getPlayers() {
 		return players;
 	}
 	/**
 	 * @param players the players to set
 	 */
-	public void setPlayers(List<ObjectId> players) {
+	public void setPlayers(List<String> players) {
 		this.players = players;
 	}
 	/**
 	 * @return the captain
 	 */
-	public ObjectId getCaptain() {
+	public String getCaptain() {
 		return captain;
 	}
 	/**
 	 * @param captain the captain to set
 	 */
-	public void setCaptain(ObjectId captain) {
+	public void setCaptain(String captain) {
 		this.captain = captain;
 	}
 	/**
 	 * @return the manager
 	 */
-	public ObjectId getManager() {
+	public String getManager() {
 		return manager;
 	}
 	/**
 	 * @param manager the manager to set
 	 */
-	public void setManager(ObjectId manager) {
+	public void setManager(String manager) {
 		this.manager = manager;
 	}
 	/**

@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.intraedge.project.prok.domain.Team;
 
 public interface TeamRepository  extends MongoRepository<Team, String> {
-	Team findBy_id(ObjectId _id);
+	Team findTeamBy_id(String _id);
 }

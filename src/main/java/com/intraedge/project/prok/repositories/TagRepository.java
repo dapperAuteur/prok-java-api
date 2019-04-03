@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.intraedge.project.prok.domain.Tag;
 
 public interface TagRepository extends MongoRepository<Tag, String> {
-	Tag findBy_id(ObjectId _id);
+	Tag findTagBy_id(String _id);
 }

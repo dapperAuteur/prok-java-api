@@ -8,24 +8,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Tag {
 	
 	@Id
-	private ObjectId _id;
+	private String _id;
 	private String tagName;
 	private String tagDescription;
 	
 	public Tag() {}
 	
-	public Tag(ObjectId _id, String tagName, String tagDescription) {
+	public Tag(String _id, String tagName, String tagDescription) {
 		super();
 		this._id = _id;
 		this.tagName = tagName;
 		this.tagDescription = tagDescription;
 	}
 
-	public ObjectId get_id() {
+	public String get_id() {
 		return _id;
 	}
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
