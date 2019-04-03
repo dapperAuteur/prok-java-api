@@ -12,7 +12,7 @@ public class Player {
 	private ObjectId _id;
 	private String nickname;
 	@DBRef
-	private User user;
+	private ObjectId user;
 	private int atBats;
 	private int kicks;
 	private int walks;
@@ -22,7 +22,7 @@ public class Player {
 	
 	public Player() {}
 	
-	public Player(ObjectId _id, String nickname, User user, int atBats, int kicks, int walks, int pitchingOuts,
+	public Player(ObjectId _id, String nickname, ObjectId user, int atBats, int kicks, int walks, int pitchingOuts,
 			int inningsPitched) {
 		super();
 		this._id = _id;
@@ -58,13 +58,13 @@ public class Player {
 	/**
 	 * @return the user
 	 */
-	public User getUser() {
+	public ObjectId getUser() {
 		return user;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(User user) {
+	public void setUser(ObjectId user) {
 		this.user = user;
 	}
 	/**

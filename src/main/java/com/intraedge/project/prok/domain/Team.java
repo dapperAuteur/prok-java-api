@@ -1,6 +1,6 @@
 package com.intraedge.project.prok.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -14,11 +14,11 @@ public class Team {
 	private ObjectId _id;
 	private String teamName;
 	@DBRef
-	private ArrayList<Player> players;
+	private List<ObjectId> players;
 	@DBRef
-	private Player captain;
+	private ObjectId captain;
 	@DBRef
-	private User manager;
+	private ObjectId manager;
 	private int wins;
 	private int losses;
 	private int ties;
@@ -29,7 +29,7 @@ public class Team {
 	public Team() {}
 	
 	
-	public Team(ObjectId _id, String teamName, ArrayList<Player> players, Player captain, User manager, int wins,
+	public Team(ObjectId _id, String teamName, List<ObjectId> players, ObjectId captain, ObjectId manager, int wins,
 			int losses, int ties, int championships) {
 		super();
 		this._id = _id;
@@ -69,37 +69,37 @@ public class Team {
 	/**
 	 * @return the players
 	 */
-	public ArrayList<Player> getPlayers() {
+	public List<ObjectId> getPlayers() {
 		return players;
 	}
 	/**
 	 * @param players the players to set
 	 */
-	public void setPlayers(ArrayList<Player> players) {
+	public void setPlayers(List<ObjectId> players) {
 		this.players = players;
 	}
 	/**
 	 * @return the captain
 	 */
-	public Player getCaptain() {
+	public ObjectId getCaptain() {
 		return captain;
 	}
 	/**
 	 * @param captain the captain to set
 	 */
-	public void setCaptain(Player captain) {
+	public void setCaptain(ObjectId captain) {
 		this.captain = captain;
 	}
 	/**
 	 * @return the manager
 	 */
-	public User getManager() {
+	public ObjectId getManager() {
 		return manager;
 	}
 	/**
 	 * @param manager the manager to set
 	 */
-	public void setManager(User manager) {
+	public void setManager(ObjectId manager) {
 		this.manager = manager;
 	}
 	/**
@@ -224,6 +224,9 @@ public class Team {
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 

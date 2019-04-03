@@ -1,6 +1,6 @@
 package com.intraedge.project.prok.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -11,18 +11,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class League {
 	
 	@Id
-	private ObjectId _id;
+	private String _id;
 	private String leagueName;
 	@DBRef
-	private ArrayList<Team> teams;
+	private List<String> teams;
 	@DBRef
-	private User leagueManager;
+	private String leagueManager;
 	@DBRef
-	private Schedule schedule;
+	private String schedule;
 	
 	public League() {}
-	
-	public League(ObjectId _id, String leagueName, ArrayList<Team> teams, User leagueManager, Schedule schedule) {
+
+	public League(String _id, String leagueName, List<String> teams, String leagueManager,
+			String schedule) {
 		super();
 		this._id = _id;
 		this.leagueName = leagueName;
@@ -31,7 +32,9 @@ public class League {
 		this.schedule = schedule;
 	}
 
-	public ObjectId get_id() {
+
+
+	public String get_id() {
 		return _id;
 	}
 	
@@ -39,7 +42,7 @@ public class League {
 //		return _id.toHexString();
 //	}
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
@@ -49,22 +52,29 @@ public class League {
 	public void setLeagueName(String leagueName) {
 		this.leagueName = leagueName;
 	}
-	public ArrayList<Team> getTeams() {
+	
+
+	public List<String> getTeams() {
 		return teams;
 	}
-	public void setTeams(ArrayList<Team> teams) {
+
+	public void setTeams(List<String> teams) {
 		this.teams = teams;
 	}
-	public User getLeagueManager() {
+
+	public String getLeagueManager() {
 		return leagueManager;
 	}
-	public void setLeagueManager(User leagueManager) {
+
+	public void setLeagueManager(String leagueManager) {
 		this.leagueManager = leagueManager;
 	}
-	public Schedule getSchedule() {
+
+	public String getSchedule() {
 		return schedule;
 	}
-	public void setSchedule(Schedule schedule) {
+
+	public void setSchedule(String schedule) {
 		this.schedule = schedule;
 	}
 

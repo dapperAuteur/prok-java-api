@@ -1,7 +1,7 @@
 package com.intraedge.project.prok.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -14,16 +14,16 @@ public class Match {
 	@Id
 	private ObjectId _id;
 	@DBRef
-	private User scoreKeeper;
+	private ObjectId scoreKeeper;
 	@DBRef
-	private Team homeTeam;
+	private ObjectId homeTeam;
 	@DBRef
-	private ArrayList<Player> homeTeamKickingOrder;
+	private List<ObjectId> homeTeamKickingOrder;
 	private int homeTeamScore;
 	@DBRef
-	private Team awayTeam;
+	private ObjectId awayTeam;
 	@DBRef
-	private ArrayList<Player> awayTeamKickingOrder;
+	private List<ObjectId> awayTeamKickingOrder;
 	private int awayTeamScore;
 	private String locationAddress;
 	private String locationName;
@@ -47,8 +47,8 @@ public class Match {
 	
 	public Match() {}
 	
-	public Match(ObjectId _id, User scoreKeeper, Team homeTeam, ArrayList<Player> homeTeamKickingOrder,
-			int homeTeamScore, Team awayTeam, ArrayList<Player> awayTeamKickingOrder, int awayTeamScore,
+	public Match(ObjectId _id, ObjectId scoreKeeper, ObjectId homeTeam, List<ObjectId> homeTeamKickingOrder,
+			int homeTeamScore, ObjectId awayTeam, List<ObjectId> awayTeamKickingOrder, int awayTeamScore,
 			String locationAddress, String locationName, String locationGPS, String locationCity, String locationState,
 			String locationZipCode, String field, String currentInning, Boolean extraInnings, int balls, int strikes,
 			int fouls, int outs, Boolean encroachmentWarning, int matchLength, String lengthMeasured, Date startTime) {
@@ -88,22 +88,22 @@ public class Match {
 		this._id = _id;
 	}
 
-	public User getScoreKeeper() {
+	public ObjectId getScoreKeeper() {
 		return scoreKeeper;
 	}
-	public void setScoreKeeper(User scoreKeeper) {
+	public void setScoreKeeper(ObjectId scoreKeeper) {
 		this.scoreKeeper = scoreKeeper;
 	}
-	public Team getHomeTeam() {
+	public ObjectId getHomeTeam() {
 		return homeTeam;
 	}
-	public void setHomeTeam(Team homeTeam) {
+	public void setHomeTeam(ObjectId homeTeam) {
 		this.homeTeam = homeTeam;
 	}
-	public ArrayList<Player> getHomeTeamKickingOrder() {
+	public List<ObjectId> getHomeTeamKickingOrder() {
 		return homeTeamKickingOrder;
 	}
-	public void setHomeTeamKickingOrder(ArrayList<Player> homeTeamKickingOrder) {
+	public void setHomeTeamKickingOrder(List<ObjectId> homeTeamKickingOrder) {
 		this.homeTeamKickingOrder = homeTeamKickingOrder;
 	}
 	public int getHomeTeamScore() {
@@ -112,16 +112,16 @@ public class Match {
 	public void setHomeTeamScore(int homeTeamScore) {
 		this.homeTeamScore = homeTeamScore;
 	}
-	public Team getAwayTeam() {
+	public ObjectId getAwayTeam() {
 		return awayTeam;
 	}
-	public void setAwayTeam(Team awayTeam) {
+	public void setAwayTeam(ObjectId awayTeam) {
 		this.awayTeam = awayTeam;
 	}
-	public ArrayList<Player> getAwayTeamKickingOrder() {
+	public List<ObjectId> getAwayTeamKickingOrder() {
 		return awayTeamKickingOrder;
 	}
-	public void setAwayTeamKickingOrder(ArrayList<Player> awayTeamKickingOrder) {
+	public void setAwayTeamKickingOrder(List<ObjectId> awayTeamKickingOrder) {
 		this.awayTeamKickingOrder = awayTeamKickingOrder;
 	}
 	public int getAwayTeamScore() {

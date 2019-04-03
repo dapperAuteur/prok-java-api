@@ -1,7 +1,7 @@
 package com.intraedge.project.prok.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -14,16 +14,16 @@ public class Schedule {
 	@Id
 	private ObjectId _id;
 	@DBRef
-	private User manager;
+	private ObjectId manager;
 	@DBRef
-	private ArrayList<Match> matches;
+	private List<ObjectId> matches;
 	private Date startDate;
 	private Date endDate;
 	
 	
 	public Schedule() {}
 	
-	public Schedule(ObjectId _id, User manager, ArrayList<Match> matches, Date startDate, Date endDate) {
+	public Schedule(ObjectId _id, ObjectId manager, List<ObjectId> matches, Date startDate, Date endDate) {
 		super();
 		this._id = _id;
 		this.manager = manager;
@@ -40,16 +40,16 @@ public class Schedule {
 		this._id = _id;
 	}
 
-	public User getManager() {
+	public ObjectId getManager() {
 		return manager;
 	}
-	public void setManager(User manager) {
+	public void setManager(ObjectId manager) {
 		this.manager = manager;
 	}
-	public ArrayList<Match> getMatches() {
+	public List<ObjectId> getMatches() {
 		return matches;
 	}
-	public void setMatches(ArrayList<Match> matches) {
+	public void setMatches(List<ObjectId> matches) {
 		this.matches = matches;
 	}
 	public Date getStartDate() {
