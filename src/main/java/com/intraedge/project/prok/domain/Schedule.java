@@ -3,27 +3,23 @@ package com.intraedge.project.prok.domain;
 import java.util.Date;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "schedules")
 public class Schedule {
 
 	@Id
-	private ObjectId _id;
-	@DBRef
-	private ObjectId manager;
-	@DBRef
-	private List<ObjectId> matches;
+	private String _id;
+	private String manager;
+	private List<String> matches;
 	private Date startDate;
 	private Date endDate;
 	
 	
 	public Schedule() {}
 	
-	public Schedule(ObjectId _id, ObjectId manager, List<ObjectId> matches, Date startDate, Date endDate) {
+	public Schedule(String _id, String manager, List<String> matches, Date startDate, Date endDate) {
 		super();
 		this._id = _id;
 		this.manager = manager;
@@ -32,24 +28,24 @@ public class Schedule {
 		this.endDate = endDate;
 	}
 
-	public ObjectId get_id() {
+	public String get_id() {
 		return _id;
 	}
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
-	public ObjectId getManager() {
+	public String getManager() {
 		return manager;
 	}
-	public void setManager(ObjectId manager) {
+	public void setManager(String manager) {
 		this.manager = manager;
 	}
-	public List<ObjectId> getMatches() {
+	public List<String> getMatches() {
 		return matches;
 	}
-	public void setMatches(List<ObjectId> matches) {
+	public void setMatches(List<String> matches) {
 		this.matches = matches;
 	}
 	public Date getStartDate() {
