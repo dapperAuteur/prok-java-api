@@ -1,6 +1,5 @@
 package com.intraedge.project.prok.domain;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,10 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Player {
 	
 	@Id
-	private ObjectId _id;
+	private String _id;
 	private String nickname;
 	@DBRef
-	private ObjectId user;
+	private String user;
 	private int atBats;
 	private int kicks;
 	private int walks;
@@ -22,7 +21,7 @@ public class Player {
 	
 	public Player() {}
 	
-	public Player(ObjectId _id, String nickname, ObjectId user, int atBats, int kicks, int walks, int pitchingOuts,
+	public Player(String _id, String nickname, String user, int atBats, int kicks, int walks, int pitchingOuts,
 			int inningsPitched) {
 		super();
 		this._id = _id;
@@ -35,11 +34,11 @@ public class Player {
 		this.inningsPitched = inningsPitched;
 	}
 
-	public ObjectId get_id() {
+	public String get_id() {
 		return _id;
 	}
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
@@ -58,13 +57,13 @@ public class Player {
 	/**
 	 * @return the user
 	 */
-	public ObjectId getUser() {
+	public String getUser() {
 		return user;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(ObjectId user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 	/**

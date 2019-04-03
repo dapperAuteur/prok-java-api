@@ -23,31 +23,31 @@ public class LeagueController {
 	@Autowired
 	private LeagueService leagueService;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public List<League> getLeagues(){
 		List<League> leagues = leagueService.getLeagues();
 		return leagues;
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public League getLeagueBy_id(@PathVariable("id") String _id) {
+	@RequestMapping(value="/{_id}", method=RequestMethod.GET)
+	public League getLeagueBy_id(@PathVariable("_id") String _id) {
 		return leagueService.findLeagueBy_id(_id);
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public League modifyLeagueBy_id(@PathVariable("id") String _id, @Valid @RequestBody League league) {
+	@RequestMapping(value="/{_id}", method=RequestMethod.PATCH)
+	public League modifyLeagueBy_id(@PathVariable("_id") String _id, @Valid @RequestBody League league) {
 		league.set_id(_id);
 		leagueService.updateLeagueBy_id(league);
 		return league;
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.POST)
-	public League createLeague(@Valid @RequestBody League league) {
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public League createLeague(@Valid @RequestBody League newLeague) {
 //		league.set_id(ObjectId.get().toHexString());
 //		System.out.println("league");
 //		System.out.println(league);
-		leagueService.createLeague(league);
-		return league;
+		League createdLeague = leagueService.createLeague(newLeague);
+		return createdLeague;
 	}
 	
 	@RequestMapping(value="/{_id}", method=RequestMethod.DELETE)

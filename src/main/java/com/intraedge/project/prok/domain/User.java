@@ -1,6 +1,5 @@
 package com.intraedge.project.prok.domain;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,22 +8,13 @@ public class User {
 	
 	@Id
 	private String _id;
-//	private ObjectId _id;
 	private String username;
 	private String userRole;
 	private String profilePicture;
 	private String password;
 	
 	public User() {}
-		
-//	public User(ObjectId _id, String username, String userRole, String profilePicture, String password) {
-//		super();
-//		this._id = _id;
-//		this.username = username;
-//		this.userRole = userRole;
-//		this.profilePicture = profilePicture;
-//		this.password = password;
-//	}
+
 	public User(String _id, String username, String userRole, String profilePicture, String password) {
 		super();
 		this._id = _id;
@@ -34,16 +24,10 @@ public class User {
 		this.password = password;
 	}
 
-//	public ObjectId get_id() {
-//		return _id;
-//	}
 	public String get_id() {
 		return _id;
 	}
 
-//	public void set_id(ObjectId _id) {
-//		this._id = _id;
-//	}
 	public void set_id(String _id) {
 		this._id = _id;
 	}

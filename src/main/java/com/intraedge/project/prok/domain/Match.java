@@ -3,7 +3,6 @@ package com.intraedge.project.prok.domain;
 import java.util.Date;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,18 +11,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Match {
 
 	@Id
-	private ObjectId _id;
+	private String _id;
 	@DBRef
-	private ObjectId scoreKeeper;
+	private String scoreKeeper;
 	@DBRef
-	private ObjectId homeTeam;
+	private String homeTeam;
 	@DBRef
-	private List<ObjectId> homeTeamKickingOrder;
+	private List<String> homeTeamKickingOrder;
 	private int homeTeamScore;
 	@DBRef
-	private ObjectId awayTeam;
+	private String awayTeam;
 	@DBRef
-	private List<ObjectId> awayTeamKickingOrder;
+	private List<String> awayTeamKickingOrder;
 	private int awayTeamScore;
 	private String locationAddress;
 	private String locationName;
@@ -47,8 +46,8 @@ public class Match {
 	
 	public Match() {}
 	
-	public Match(ObjectId _id, ObjectId scoreKeeper, ObjectId homeTeam, List<ObjectId> homeTeamKickingOrder,
-			int homeTeamScore, ObjectId awayTeam, List<ObjectId> awayTeamKickingOrder, int awayTeamScore,
+	public Match(String _id, String scoreKeeper, String homeTeam, List<String> homeTeamKickingOrder,
+			int homeTeamScore, String awayTeam, List<String> awayTeamKickingOrder, int awayTeamScore,
 			String locationAddress, String locationName, String locationGPS, String locationCity, String locationState,
 			String locationZipCode, String field, String currentInning, Boolean extraInnings, int balls, int strikes,
 			int fouls, int outs, Boolean encroachmentWarning, int matchLength, String lengthMeasured, Date startTime) {
@@ -80,30 +79,30 @@ public class Match {
 		this.startTime = startTime;
 	}
 
-	public ObjectId get_id() {
+	public String get_id() {
 		return _id;
 	}
 
-	public void set_id(ObjectId _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
-	public ObjectId getScoreKeeper() {
+	public String getScoreKeeper() {
 		return scoreKeeper;
 	}
-	public void setScoreKeeper(ObjectId scoreKeeper) {
+	public void setScoreKeeper(String scoreKeeper) {
 		this.scoreKeeper = scoreKeeper;
 	}
-	public ObjectId getHomeTeam() {
+	public String getHomeTeam() {
 		return homeTeam;
 	}
-	public void setHomeTeam(ObjectId homeTeam) {
+	public void setHomeTeam(String homeTeam) {
 		this.homeTeam = homeTeam;
 	}
-	public List<ObjectId> getHomeTeamKickingOrder() {
+	public List<String> getHomeTeamKickingOrder() {
 		return homeTeamKickingOrder;
 	}
-	public void setHomeTeamKickingOrder(List<ObjectId> homeTeamKickingOrder) {
+	public void setHomeTeamKickingOrder(List<String> homeTeamKickingOrder) {
 		this.homeTeamKickingOrder = homeTeamKickingOrder;
 	}
 	public int getHomeTeamScore() {
@@ -112,16 +111,16 @@ public class Match {
 	public void setHomeTeamScore(int homeTeamScore) {
 		this.homeTeamScore = homeTeamScore;
 	}
-	public ObjectId getAwayTeam() {
+	public String getAwayTeam() {
 		return awayTeam;
 	}
-	public void setAwayTeam(ObjectId awayTeam) {
+	public void setAwayTeam(String awayTeam) {
 		this.awayTeam = awayTeam;
 	}
-	public List<ObjectId> getAwayTeamKickingOrder() {
+	public List<String> getAwayTeamKickingOrder() {
 		return awayTeamKickingOrder;
 	}
-	public void setAwayTeamKickingOrder(List<ObjectId> awayTeamKickingOrder) {
+	public void setAwayTeamKickingOrder(List<String> awayTeamKickingOrder) {
 		this.awayTeamKickingOrder = awayTeamKickingOrder;
 	}
 	public int getAwayTeamScore() {
