@@ -1,6 +1,7 @@
 package com.intraedge.project.prok.controllers;
 
 import java.util.List;
+import com.intraedge.project.prok.utilities.Utility;
 
 import javax.validation.Valid;
 
@@ -20,8 +21,10 @@ import com.intraedge.project.prok.services.PlayerService;
  * PlayerController
  */
 @RestController
-@RequestMapping("/players")
+@RequestMapping(Utility.apiVersion + "players")
 public class PlayerController {
+	
+	
 
   @Autowired
   private PlayerService playerService;

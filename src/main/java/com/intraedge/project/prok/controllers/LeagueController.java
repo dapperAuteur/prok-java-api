@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intraedge.project.prok.domain.League;
 import com.intraedge.project.prok.services.LeagueService;
+import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping("/leagues")
+@RequestMapping(Utility.apiVersion + "leagues")
 public class LeagueController {
 	
 	@Autowired

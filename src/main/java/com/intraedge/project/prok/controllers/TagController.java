@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intraedge.project.prok.domain.Tag;
 import com.intraedge.project.prok.services.TagService;
+import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping("/tags")
+@RequestMapping(Utility.apiVersion + "tags")
 public class TagController {
 
 	@Autowired

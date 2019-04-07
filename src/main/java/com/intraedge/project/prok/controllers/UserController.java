@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intraedge.project.prok.domain.User;
 import com.intraedge.project.prok.services.UserService;
+import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(Utility.apiVersion + "users")
 public class UserController {
 	
 	@Autowired

@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intraedge.project.prok.domain.Team;
 import com.intraedge.project.prok.services.TeamService;
+import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping("/teams")
+@RequestMapping(Utility.apiVersion + "teams")
 public class TeamController {
 
 	@Autowired
