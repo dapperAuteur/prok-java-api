@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.intraedge.project.prok.domain.User;
+import com.intraedge.project.prok.exceptions.UsernameAlreadyExistsException;
 import com.intraedge.project.prok.repositories.UserRepository;
 
 @Service
@@ -18,15 +19,16 @@ public class AuthService {
 	
 	public User createUser(User newUser) {
 		
-//		try {
-//			
-//		} catch (Exception e) {
-//			throw new UserIdException
-//		}
+		try {
+			newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
+			newUser.setUsername(newUser.getUsername());
+			User createdUser = userRepository.save(newUser);
+			return createdUser;
+		} catch (Exception e) {
+			throw new UsernameAlreadyExistsException("Username '" + newUser.getUsername() + "' already exists.");
+		}
 		
-		newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
-		User createdUser = userRepository.save(newUser);
-		return createdUser;
+		
 	}
 
 }
