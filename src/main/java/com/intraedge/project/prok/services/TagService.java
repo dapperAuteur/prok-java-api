@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intraedge.project.prok.domain.Tag;
+import com.intraedge.project.prok.domains.Tag;
 import com.intraedge.project.prok.repositories.TagRepository;
 
 @Service

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.intraedge.project.prok.domain.User;
+import com.intraedge.project.prok.domains.User;
 import com.intraedge.project.prok.repositories.UserRepository;
 
 @Service

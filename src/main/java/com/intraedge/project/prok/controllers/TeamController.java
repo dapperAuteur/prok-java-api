@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intraedge.project.prok.domain.Team;
+import com.intraedge.project.prok.domains.Team;
 import com.intraedge.project.prok.services.TeamService;
 import com.intraedge.project.prok.utilities.Utility;
 

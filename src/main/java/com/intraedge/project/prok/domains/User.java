@@ -1,4 +1,4 @@
-package com.intraedge.project.prok.domain;
+package com.intraedge.project.prok.domains;
 
 import java.util.Collection;
 

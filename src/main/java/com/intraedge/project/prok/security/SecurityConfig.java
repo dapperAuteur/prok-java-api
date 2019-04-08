@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import com.intraedge.project.prok.utilities.Utility;
 
 
 @Configuration
@@ -17,6 +18,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 		prePostEnabled=true
 		)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	String auth = Utility.apiVersion + Utility.SIGN_UP_URLS;
 	
 	@Autowired
 	private SessionAuthenticationEntryPoint unauthorizedHandler;
@@ -46,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					"/**/*.css",
 					"/**/*.js"
 				).permitAll()
-			.antMatchers("/api/ver0001/auth/**").permitAll()
+			.antMatchers(auth).permitAll()
 			.anyRequest().authenticated();
 	}
 	

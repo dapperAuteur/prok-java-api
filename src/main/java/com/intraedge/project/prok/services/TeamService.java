@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intraedge.project.prok.domain.Team;
+import com.intraedge.project.prok.domains.Team;
 import com.intraedge.project.prok.repositories.TeamRepository;
 
 @Service

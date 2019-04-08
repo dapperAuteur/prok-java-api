@@ -1,4 +1,4 @@
-package com.intraedge.project.prok.domain;
+package com.intraedge.project.prok.domains;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
