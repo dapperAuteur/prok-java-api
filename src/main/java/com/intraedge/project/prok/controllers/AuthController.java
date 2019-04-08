@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intraedge.project.prok.domain.User;
+import com.intraedge.project.prok.domains.User;
 import com.intraedge.project.prok.services.AuthService;
 import com.intraedge.project.prok.services.MapValidationErrorService;
-import com.intraedge.project.prok.services.UserService;
 import com.intraedge.project.prok.utilities.Utility;
+import com.intraedge.project.prok.validators.UserValidator;
 
 @RestController
 @RequestMapping(Utility.apiVersion + "auth")
@@ -25,10 +25,15 @@ public class AuthController {
 	private MapValidationErrorService mapValidationErrorService;
 	
 	@Autowired
-	AuthService authService;
+	private AuthService authService;
+	
+	@Autowired
+	private UserValidator userValidator;
 	
 	@PostMapping("/sign-up")
 	public ResponseEntity<?> signUp(@Valid @RequestBody User newUser, BindingResult result){
+		
+		userValidator.validate(newUser, result);
 		
 		ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
 		if(errorMap != null) return errorMap;
