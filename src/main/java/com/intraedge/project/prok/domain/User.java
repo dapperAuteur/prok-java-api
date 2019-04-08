@@ -1,10 +1,15 @@
 package com.intraedge.project.prok.domain;
 
+import java.util.Collection;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Document(collection = "users")
-public class User {
+public class User implements UserDetails {
 	
 	@Id
 	private String _id;
@@ -13,15 +18,36 @@ public class User {
 	private String profilePicture;
 	private String password;
 	
+	@Transient
+	private String confirmPassword;
+	
 	public User() {}
 
-	public User(String _id, String username, String userRole, String profilePicture, String password) {
+	public User(String _id, String username, String userRole, String profilePicture, String password,
+			String confirmPassword) {
 		super();
 		this._id = _id;
 		this.username = username;
 		this.userRole = userRole;
 		this.profilePicture = profilePicture;
 		this.password = password;
+		this.confirmPassword = confirmPassword;
+	}
+
+
+
+	/**
+	 * @return the confirmPassword
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	/**
+	 * @param confirmPassword the confirmPassword to set
+	 */
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	public String get_id() {
@@ -133,6 +159,36 @@ public class User {
 				return false;
 		} else if (!username.equals(other.username))
 			return false;
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 
