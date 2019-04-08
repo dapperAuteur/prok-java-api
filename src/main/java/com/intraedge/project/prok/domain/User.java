@@ -2,6 +2,8 @@ package com.intraedge.project.prok.domain;
 
 import java.util.Collection;
 
+import javax.validation.constraints.Email;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,6 +17,7 @@ public class User implements UserDetails {
 	
 	@Id
 	private String _id;
+	@Email
 	private String username;
 	private String userRole;
 	private String profilePicture;
