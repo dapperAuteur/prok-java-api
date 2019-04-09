@@ -2,11 +2,11 @@ package com.intraedge.project.prok.services;
 
 import java.util.List;
 
-import com.intraedge.project.prok.domain.Schedule;
-import com.intraedge.project.prok.repositories.ScheduleRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.intraedge.project.prok.domains.Schedule;
+import com.intraedge.project.prok.repositories.ScheduleRepository;
 
 /**
  * ScheduleService
