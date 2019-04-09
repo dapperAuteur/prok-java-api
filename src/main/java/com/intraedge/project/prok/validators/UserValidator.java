@@ -7,6 +7,7 @@ import org.springframework.validation.Validator;
 import com.intraedge.project.prok.domains.User;
 
 
+
 @Component
 public class UserValidator implements Validator {
 
