@@ -19,7 +19,7 @@ import com.intraedge.project.prok.services.MatchService;
 import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping(Utility.apiVersion + "matches")
+@RequestMapping(Utility.API_VERSION + "matches")
 public class MatchController {
 	
 	@Autowired

@@ -19,7 +19,7 @@ import com.intraedge.project.prok.utilities.Utility;
 		)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	String auth = Utility.apiVersion + Utility.SIGN_UP_URLS;
+	String auth = Utility.API_VERSION + Utility.SIGN_UP_URLS;
 	
 	@Autowired
 	private SessionAuthenticationEntryPoint unauthorizedHandler;

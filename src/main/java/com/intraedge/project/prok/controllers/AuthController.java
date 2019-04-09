@@ -18,7 +18,7 @@ import com.intraedge.project.prok.utilities.Utility;
 import com.intraedge.project.prok.validators.UserValidator;
 
 @RestController
-@RequestMapping(Utility.apiVersion + "auth")
+@RequestMapping(Utility.API_VERSION + "auth")
 public class AuthController {
 	
 	@Autowired

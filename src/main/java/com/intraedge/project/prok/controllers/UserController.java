@@ -19,7 +19,7 @@ import com.intraedge.project.prok.services.UserService;
 import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping(Utility.apiVersion + "users")
+@RequestMapping(Utility.API_VERSION + "users")
 public class UserController {
 	
 	@Autowired

@@ -18,7 +18,7 @@ import com.intraedge.project.prok.services.LeagueService;
 import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping(Utility.apiVersion + "leagues")
+@RequestMapping(Utility.API_VERSION + "leagues")
 public class LeagueController {
 	
 	@Autowired

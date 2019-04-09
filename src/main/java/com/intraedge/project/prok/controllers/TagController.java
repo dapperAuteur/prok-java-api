@@ -18,7 +18,7 @@ import com.intraedge.project.prok.services.TagService;
 import com.intraedge.project.prok.utilities.Utility;
 
 @RestController
-@RequestMapping(Utility.apiVersion + "tags")
+@RequestMapping(Utility.API_VERSION + "tags")
 public class TagController {
 
 	@Autowired

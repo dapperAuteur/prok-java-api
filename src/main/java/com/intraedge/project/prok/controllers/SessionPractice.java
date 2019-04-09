@@ -9,7 +9,7 @@ import com.intraedge.project.prok.utilities.Utility;
 
 
 @RestController
-@RequestMapping(Utility.apiVersion)
+@RequestMapping(Utility.API_VERSION)
 public class SessionPractice {
 	
 	@RequestMapping("todoapp/count")

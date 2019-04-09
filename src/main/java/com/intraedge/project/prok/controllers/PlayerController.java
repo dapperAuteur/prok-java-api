@@ -21,7 +21,7 @@ import com.intraedge.project.prok.services.PlayerService;
  * PlayerController
  */
 @RestController
-@RequestMapping(Utility.apiVersion + "players")
+@RequestMapping(Utility.API_VERSION + "players")
 public class PlayerController {
 	
 	
